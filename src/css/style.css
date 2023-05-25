@@ -28,7 +28,7 @@ body {
 /* Header */
 header {
     position: fixed;
-    width: 100%;
+    width: 100dvw;
 
     display: flex;
     justify-content: space-between;
@@ -188,7 +188,10 @@ footer div {
 
 /* Choose - page*/
 .choose-form {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .choose-form button {
@@ -204,34 +207,24 @@ footer div {
 
 .choose-cards-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-flow: row wrap;
+    justify-content: center;
     gap: 4rem;
 }
 
 .card {
-    flex-basis: 100%;
-    max-width: 12rem;
+    flex-basis: 60%;
     aspect-ratio: 1;
-    margin: 1rem;
     background-color: var(--accent-color);
+
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 }
 
-@media screen and (min-width: 300px) {
-    .choose-cards-container {
-        gap: 0;
-    }
-
+@media screen and (min-width: 600px){
     .card {
-        flex-basis: calc(50% - 2rem);
+        flex-basis: calc(33% - 4rem);
     }
-}
-
-.hide {
-    display: none;
 }
