@@ -230,3 +230,17 @@ footer div {
     }
 }
 
+#lightblue-container{
+    background-color: #B5F6FA;
+    width: 100%; 
+    height: 1000px; 
+    border-top-right-radius: 120px; 
+    border-bottom-right-radius: 25px; 
+    
+  
+ 
+}
+
+/* #white-container{
+    background-color: white;
+} */
