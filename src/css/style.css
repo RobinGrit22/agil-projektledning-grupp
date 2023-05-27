@@ -236,11 +236,12 @@ footer div {
     height: 1000px; 
     border-top-right-radius: 120px; 
     border-bottom-right-radius: 25px; 
-    
-  
- 
 }
 
-/* #white-container{
+#white-container {
     background-color: white;
-} */
+    width: 80%; 
+    height: 80vh; 
+    margin: 10vh 20% 10vh 10%; 
+    border-top-right-radius: 120px; 
+  }
