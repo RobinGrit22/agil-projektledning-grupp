@@ -44,7 +44,7 @@ async function getCompanies() {
 
   for(let workplace of workplaces){
     for(let size of sizes){
-      const q = query(companiesRef, where("workplace", "==", "workplace"), where("size", "==", "size"));
+      const q = query(companiesRef, where("workplace", "==", workplace), where("size", "==", size));
       companyQueries.push(getDocs(q));
     }
   }
