@@ -1,12 +1,12 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, collection, query, where, getDocs} from "firebase/firestore";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0tY2Svlzr0j8F6Dv0WSXeIrsG6F_cY3I",
   authDomain: "agil-projektledning-grupp.firebaseapp.com",
-  databaseURL: "https://agil-projektledning-grupp-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://agil-projektledning-grupp-default-rtdb.europe-west1.firebasedatabase.app/",
   projectId: "agil-projektledning-grupp",
   storageBucket: "agil-projektledning-grupp.appspot.com",
   messagingSenderId: "926760801750",
@@ -15,32 +15,32 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getDatabase(app)
 
 // Lägg till företag i databasen
-setDoc(doc(db, "companies", "company13"), {
+set(ref(db, 'companies/company13'), {
   name: "IoT Innovators",
   culture: "relaxed",
   size: "startup",
   workplace: "remote",
   industry: "IoT"
 }).then(() => {
-    console.log("Funkar, skickat!");
+    console.log("Data sent successfully!");
 }).catch((error) => {
-    console.error("Gick inte, error!: ", error);
+    console.error("Error: ", error);
 });
 
-
-//sortera företagen
-async function getRemoteStartups() {
-  const companiesRef = collection(db, "companies");
-
-  const q = query(companiesRef, where("workplace", "==", "remote"), where("size", "==", "startup"));
-
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
+//sorterar företagen
+async function getCompanies() {
+  const companiesRef = ref(db, 'companies');
+  onValue(companiesRef, (snapshot) => {
+    const data = snapshot.val();
+    for (let id in data) {
+      console.log(id, " => ", data[id]);
+    }
   });
 }
 
-getRemoteStartups();
+getCompanies();
+
+getCompanies();
