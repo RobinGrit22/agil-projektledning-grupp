@@ -46,6 +46,7 @@ header {
     padding: 1rem;
     font-size: 1.75rem;
     font-weight: 700;
+    font-family: Reem Kufi Fun;
 }
 
 header div a {
@@ -157,9 +158,11 @@ footer {
     border-radius: 0 1.75rem 0 0;
 }
 
-footer h4 {
-    color: var(--white);
+.about-a {
     font-size: 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--white);
 }
 
 /* social media icons */
@@ -366,3 +369,12 @@ footer div {
   }
   
 
+/* ABOUT  */
+
+#about-article{
+    background-color: var(--accent-color);
+    width: 90vw;
+    padding: 1em;
+    margin-bottom: 2em;
+    line-height: 2;
+}
