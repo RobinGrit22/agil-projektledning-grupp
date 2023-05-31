@@ -20,10 +20,11 @@ async function getAllCompanies() {
 }
 
 function displayCompanies(companies) {
-  const container = document.getElementById("white-container");
+  const container = document.getElementById("lightblue-container");
 
   companies.forEach((company) => {
     const companyDiv = document.createElement("div");
+    companyDiv.classList.add("white-container");
     companyDiv.textContent = company.name;
     container.appendChild(companyDiv);
   });
