@@ -1,18 +1,26 @@
-// Frågorna kan läggas in i databasen så slipper vi ha de här
-const dbQuestions = [
-  {
-    title: "workplace",
-    question: "Skulle du hellre arbeta...",
-    answer1: "remote",
-    answer2: "on_site",
-  },
-  {
-    title: "size",
-    question: "Arbeta på ett...",
-    answer1: "startup",
-    answer2: "korporat",
-  },
-];
+const dbQuestions = [];
+
+async function fetchQuestionsFromDB() {
+  try {
+    const response = await fetch(
+      "https://agil-projektledning-grupp-default-rtdb.europe-west1.firebasedatabase.app/questions.json"
+    );
+    const questions = await response.json();
+
+    // Convert the object of questions to an array and loop through it
+    Object.values(questions).forEach((question) => {
+      // Add the question to the dbQuestions array
+      dbQuestions.push(question);
+      renderQuestion();
+    });
+
+    console.log(dbQuestions);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchQuestionsFromDB();
 
 const form = document.querySelector("form");
 const questionText = document.querySelector("h2");
@@ -59,6 +67,3 @@ const cacheAnswers = () => {
   localStorage.setItem("userChoices", JSON.stringify(userChoices));
   window.location.href = "results.html";
 };
-
-// Render first question
-renderQuestion();
